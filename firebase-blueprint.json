@@ -1,0 +1,76 @@
+{
+  "entities": {
+    "product": {
+      "title": "Product",
+      "description": "Catalog product with specs, pricing, and stock",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 200 },
+        "slug": { "type": "string", "maxLength": 200 },
+        "category": { "type": "string", "maxLength": 100 },
+        "regularPrice": { "type": "number" },
+        "salePrice": { "type": "number" },
+        "stock": { "type": "number" },
+        "sku": { "type": "string", "maxLength": 50 },
+        "brand": { "type": "string", "maxLength": 100 },
+        "featured": { "type": "boolean" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["name", "slug", "category", "regularPrice", "salePrice", "stock", "active"]
+    },
+    "category": {
+      "title": "Category",
+      "description": "Product collection category",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "slug": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 500 },
+        "active": { "type": "boolean" }
+      },
+      "required": ["name", "slug", "active"]
+    },
+    "order": {
+      "title": "Order",
+      "description": "Customer purchase transaction record",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string", "maxLength": 150 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "email": { "type": "string", "maxLength": 150 },
+        "total": { "type": "number" },
+        "orderStatus": { "type": "string", "enum": ["Pending", "Confirmed", "Processing", "Shipped", "Delivered", "Cancelled"] },
+        "paymentStatus": { "type": "string", "enum": ["pending", "paid", "failed"] }
+      },
+      "required": ["customerName", "phone", "email", "total", "orderStatus", "paymentStatus"]
+    },
+    "settings": {
+      "title": "WebsiteSettings",
+      "description": "Dynamic website configuration",
+      "type": "object",
+      "properties": {
+        "websiteName": { "type": "string", "maxLength": 100 },
+        "tagline": { "type": "string", "maxLength": 200 }
+      },
+      "required": ["websiteName"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "product",
+      "description": "Products available in store"
+    },
+    "/categories/{categoryId}": {
+      "schema": "category",
+      "description": "Store categories"
+    },
+    "/orders/{orderId}": {
+      "schema": "order",
+      "description": "Customer purchase orders"
+    },
+    "/settings/{settingId}": {
+      "schema": "settings",
+      "description": "Dynamic website branding and options"
+    }
+  }
+}

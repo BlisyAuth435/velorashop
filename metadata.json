@@ -1,0 +1,6 @@
+{
+  "name": "VELORA — Premium 3D E-Commerce & Business Suite",
+  "description": "Luxury 3D e-commerce store with interactive product rendering, dynamic brand customizer, full catalog, and powerful admin management panel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
